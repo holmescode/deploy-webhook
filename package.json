@@ -1,0 +1,39 @@
+{
+  "name": "server-deploy-hook",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Webhook for deploying holmescode services",
+  "main": "dist/app/index.js",
+  "scripts": {
+    "test": "mocha dist/test/*.js",
+    "build": "tsc",
+    "start": "node dist/app/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vipercloud/web.git"
+  },
+  "author": "Matt Holmes",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/vipercloud/web/issues"
+  },
+  "homepage": "https://github.com/vipercloud/web#readme",
+  "dependencies": {
+    "boom": "^4.3.1",
+    "hapi": "^16.1.1",
+    "joi": "^10.4.1",
+    "mongoose": "^4.9.8"
+  },
+  "devDependencies": {
+    "@types/boom": "^4.3.1",
+    "@types/hapi": "^16.0.6",
+    "@types/joi": "^10.3.2",
+    "@types/mocha": "^2.2.40",
+    "@types/mongoose": "^4.7.11",
+    "@types/node": "^7.0.18",
+    "mocha": "^3.3.0",
+    "tslint": "^5.2.0",
+    "typescript": "^2.3.2"
+  }
+}
