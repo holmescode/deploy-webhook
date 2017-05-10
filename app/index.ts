@@ -29,6 +29,9 @@ server.route({
                 repository: {
                     repo_name: Joi.string()
                 }
+            },
+            options: {
+                allowUnknown: true
             }
         }
     },
