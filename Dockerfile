@@ -11,6 +11,6 @@ COPY node_modules ./node_modules
 ENV NODE_ENV production
 EXPOSE 5000
 
-HEALTHCHECK CMD curl --fail http://localhost:5000/ || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:5000/health || exit 1
 
 ENTRYPOINT ["npm", "start"]

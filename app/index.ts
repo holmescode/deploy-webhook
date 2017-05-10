@@ -9,6 +9,14 @@ server.connection({
 });
 
 server.route({
+    method: 'GET',
+    path: '/health',
+    handler: (request, reply) => {
+        reply(null);
+    }
+});
+
+server.route({
     method: 'POST',
     path: '/',
     config: {
