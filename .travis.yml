@@ -17,9 +17,9 @@ script:
   - npm run build
   - npm test
   - npm prune --production
-  - docker build -t mattholmes/deploy-webhook:latest -t mattholmes/deploy-webhook:$TRAVIS_BUILD_NUMBER .
+  - docker build -t holmescode/deploy-webhook:latest -t holmescode/deploy-webhook:$TRAVIS_BUILD_NUMBER .
 
 after_success:
  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
- - docker push mattholmes/deploy-webhook:$TRAVIS_BUILD_NUMBER
- - docker push mattholmes/deploy-webhook:latest
+ - docker push holmescode/deploy-webhook:$TRAVIS_BUILD_NUMBER
+ - docker push holmescode/deploy-webhook:latest
