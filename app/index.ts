@@ -1,6 +1,14 @@
 import * as Hapi from 'hapi';
 import * as Joi from 'joi';
 import * as Boom from 'boom';
+import * as Amqp from 'amqp-ts';
+
+const amqpUrl = process.env.AMQP_URL || 'amqp://localhost';
+const connection = new Amqp.Connection(amqpUrl);
+const exchange = connection.declareExchange('holmescode.deployments', 'topic', {
+    durable: true,
+    autoDelete: false
+});
 
 const server = new Hapi.Server();
 server.connection({
@@ -32,19 +40,17 @@ server.route({
             },
             options: {
                 allowUnknown: true
-            }
-        }
+            },
+        },
     },
     handler: (request, reply) => {
-        // var entry = new Entry(request.payload);
-        // entry.save()
-        //     .then(e => reply(e))
-        //     .catch(err => reply(Boom.badImplementation(err)));
-        console.info(JSON.stringify(request.payload));
-        reply(null);
+        const message = new Amqp.Message(JSON.stringify(request.payload));
+        exchange.send(message);
+        reply(true);
     }
 });
 
-server.start()
-    .then(() => console.info('Server started'))
-    .catch(err => console.error(`Error starting server: ${err}`));
+connection.completeConfiguration()
+    .then(() => server.start())
+    .then(() => console.info('Server ready'))
+    .catch(err => console.error(`Error connecting to exchange: ${err}`));
