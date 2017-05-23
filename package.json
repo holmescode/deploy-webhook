@@ -22,12 +22,15 @@
   "dependencies": {
     "amqp-ts": "^1.4.0",
     "boom": "^4.3.1",
+    "bunyan": "^1.8.10",
     "hapi": "^16.1.1",
+    "hapi-bunyan": "^0.7.0",
     "joi": "^10.4.1",
     "mongoose": "^4.9.8"
   },
   "devDependencies": {
     "@types/boom": "^4.3.1",
+    "@types/bunyan": "0.0.36",
     "@types/hapi": "^16.0.6",
     "@types/joi": "^10.3.2",
     "@types/mocha": "^2.2.40",
